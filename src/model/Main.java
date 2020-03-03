@@ -9,10 +9,16 @@ public class Main{
     etat=etat.play(6);
     etat.affiche();
     System.out.println("Coups possibles: "+etat.getVoisins());
+    etat=etat.play(5);
+    etat.affiche();
+    System.out.println("Coups possibles: "+etat.getVoisins());
+    etat=etat.play(4);
+    etat.affiche();
+    System.out.println("Coups possibles: "+etat.getVoisins());
+    etat=etat.play(4);
+    etat.affiche();
+    System.out.println("Coups possibles: "+etat.getVoisins());
 
-    etat.saveState().entrySet().forEach(entry->{
-    System.out.println(entry.getKey() + " " + entry.getValue());
- });
   }
 
 }

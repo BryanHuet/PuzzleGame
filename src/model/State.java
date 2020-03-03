@@ -33,11 +33,15 @@ public class State{
     int max= coord0.get(0) + coord0.get(1);
     HashSet<Integer> voisins= new HashSet<>();
     for (int i=0;i<(this.grille.getLargeur()*this.grille.getHauteur());i++){
-      if(this.saveState.get(i).get(0)+this.saveState.get(i).get(1)==max-1){
-        voisins.add(i);
+      if(this.saveState.get(i).get(0)==coord0.get(0)){
+        if (this.saveState.get(i).get(1)==coord0.get(1)+1 || this.saveState.get(i).get(1)==coord0.get(1)-1){
+          voisins.add(i);
+        }
       }
-      if(this.saveState.get(i).get(0)+this.saveState.get(i).get(1)==max+1){
-        voisins.add(i);
+      if(this.saveState.get(i).get(1)==coord0.get(1)){
+        if(this.saveState.get(i).get(0)==coord0.get(0)+1 || this.saveState.get(i).get(0)==coord0.get(0)-1){
+          voisins.add(i);
+        }
       }
     }
     return voisins;
@@ -51,6 +55,10 @@ public class State{
     ArrayList<Integer>coord0=this.saveState.get(0);
     ArrayList<Integer>coordCoup=this.saveState.get(coup);
     Grille newGrille=new Grille(this.grille.getLargeur(),this.grille.getHauteur());
+    for (int i=0;i<(this.grille.getLargeur()*this.grille.getHauteur());i++){
+      newGrille.setGrille(this.saveState.get(i).get(0),this.saveState.get(i).get(1),i);
+    }
+
     newGrille.setGrille(coord0.get(0),coord0.get(1),coup);
     newGrille.setGrille(coordCoup.get(0),coordCoup.get(1),0);
     State newState = new State(newGrille);

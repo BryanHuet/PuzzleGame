@@ -1,15 +1,16 @@
 package src.model;
 
-
 public class Grille{
   private int largeur;
   private int hauteur;
   private int[][] grille;
+  private int difficulty;
 
   public Grille(int largeur,int hauteur){
     this.largeur=largeur;
     this.hauteur=hauteur;
     this.grille=this.construct();
+    this.difficulty=difficulty;
   }
 
 
@@ -21,6 +22,9 @@ public class Grille{
   }
   public int[][] getGrille(){
     return this.grille;
+  }
+  public int getSize(){
+    return this.largeur*this.hauteur;
   }
 
   public void setGrille(int i,int j,int val){
@@ -48,5 +52,7 @@ public class Grille{
       System.out.println();
     }
   }
+
+
 
 }

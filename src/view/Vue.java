@@ -12,26 +12,17 @@ public class Vue extends JPanel{
   public Vue(Jeu jeu){
     this.jeu=jeu;
     this.setBackground(Color.GRAY);
+    this.setLayout(new GridLayout(this.jeu.getGrille().getLargeur(),this.jeu.getGrille().getHauteur()));
 
-  }
-
-
-  @Override
-  public void paintComponent(Graphics g){
-    super.paintComponent(g);
-    g.setColor(Color.BLACK);
-    Font myFont = new Font ("Courier New", 1, 50);
-    g.setFont(myFont);
     for(int i=0;i<this.jeu.getGrille().getLargeur();i++){
       for (int j=0;j<this.jeu.getGrille().getHauteur();j++){
-        g.drawRect(i*DIM+50,j*DIM+50,DIM,DIM);
-        g.drawRect(i*DIM+49,j*DIM+49,DIM,DIM);
-        if (this.jeu.getGrille().getGrille()[j][i]!=0){
-          g.drawString(""+this.jeu.getGrille().getGrille()[j][i],(i*DIM+50)+100,(j*DIM+50)+100);
+        if (this.jeu.getGrille().getGrille()[i][j]!=0){
+        this.add(new Case(200,this.jeu.getGrille().getGrille()[i][j]+"",this.jeu));
+      }else{
+        this.add(new Case(200,"",this.jeu));
         }
+      }
     }
 
-    }
   }
-
 }

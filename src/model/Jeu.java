@@ -8,11 +8,11 @@ public class Jeu{
 
   public Jeu(Grille grille){
     this.grille=grille;
-    this.saveJeu=this.saveJeu();
     if (etat0){
       etat0=false;
       shuffle(10);
     }
+    this.saveJeu=this.saveJeu();
   }
 
   public Grille getGrille(){
@@ -90,5 +90,8 @@ public class Jeu{
   this.setGrille(n.getGrille());
   }
 
+  public void coup(int coup){
+      this.grille=this.play(coup).getGrille();
+  }
 
 }

@@ -45,6 +45,7 @@ public class Grille{
   }
 
   public void affiche(){
+    System.out.println();
     for(int i=0;i<this.largeur;i++){
       for(int j=0;j<this.hauteur;j++){
         System.out.print(this.grille[i][j]+" ");

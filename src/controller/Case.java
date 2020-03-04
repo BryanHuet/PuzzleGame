@@ -54,6 +54,8 @@ public void mouseClicked(MouseEvent e) {
   if (this.jeu.getVoisins().contains(i)){
     this.jeu.coup(i);
     this.jeu.affiche();
+    this.subject="";
+    this.repaint();
     }
   }
 }

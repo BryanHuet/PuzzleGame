@@ -1,7 +1,7 @@
 package src.model;
 import java.util.*;
 
-public class Jeu{
+public class Jeu extends AbstractModeleEcoutable{
   private Grille grille;
   private HashMap<Integer,ArrayList<Integer>> saveJeu;
   public static boolean etat0=true;
@@ -90,6 +90,7 @@ public class Jeu{
   public void coup(int coup){
     this.grille=this.play(coup).getGrille();
     this.saveJeu=this.play(coup).getSaveJeu();
+    fireChangement();
   }
 
 }

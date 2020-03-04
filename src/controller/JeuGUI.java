@@ -21,8 +21,4 @@ public class JeuGUI extends JFrame{
     this.pack();
     this.setSize(700,700);
   }
-
-  public JeuGUI(){
-    this(new Jeu(new Grille(3,3)));
-  }
 }

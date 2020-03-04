@@ -6,17 +6,14 @@ import src.model.*;
 import java.awt.event.*;
 
 public class Case extends JPanel implements MouseListener{
-  private int DIM;
   private String subject;
   private Jeu jeu;
 
-  public Case(int DIM,String subject,Jeu jeu){
+  public Case(String subject,Jeu jeu){
     this.jeu=jeu;
-    this.DIM=DIM;
     this.subject=subject;
     this.setBackground(Color.GRAY);
     addMouseListener(this);
-
   }
 
 
@@ -27,9 +24,9 @@ public class Case extends JPanel implements MouseListener{
     Font myFont = new Font ("Courier New", 1, 50);
     g.setFont(myFont);
     if (this.subject!=""){
-    g.drawRect(0,0,this.DIM,this.DIM);
-    g.drawRect(0,0,this.DIM-1,this.DIM-1);
-    g.drawString(this.subject,this.DIM/2,this.DIM/2);
+    g.drawRect(0,0,this.getWidth(),this.getHeight());
+    g.drawRect(0,0,this.getWidth()-1,this.getHeight()-1);
+    g.drawString(this.subject,this.getWidth()/2,this.getHeight()/2);
     }
   }
 
@@ -53,12 +50,12 @@ public void mouseExited(MouseEvent e) {
 }
 
 public void mouseClicked(MouseEvent e) {
+  System.out.println("clicked");
   if(this.subject != ""){
   int i = Integer.parseInt(this.subject);
   if (this.jeu.getVoisins().contains(i)){
 
-    this.jeu.coup(i);
-    this.jeu.affiche();
+    this.jeu=this.jeu.play(i);
     }
   }
 }

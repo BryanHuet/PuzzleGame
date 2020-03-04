@@ -8,6 +8,9 @@ public class Main{
     Grille g = new Grille (3,3);
     Jeu etat=new Jeu(g);
     etat.affiche();
-    new JeuGUI(etat);
+    etat.getSaveJeu().entrySet().forEach(entry->{
+   System.out.println(entry.getKey() + " " + entry.getValue());
+});
+    //new JeuGUI(etat);
   }
 }

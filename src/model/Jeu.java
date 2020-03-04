@@ -90,8 +90,4 @@ public class Jeu{
   this.setGrille(n.getGrille());
   }
 
-  public void coup(int coup){
-      this.grille=this.play(coup).getGrille();
-  }
-
 }

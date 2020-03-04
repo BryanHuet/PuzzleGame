@@ -6,7 +6,7 @@ import src.model.*;
 import java.awt.event.*;
 
 public class Case extends JPanel implements MouseListener{
-  private String subject;
+  public String subject;
   private Jeu jeu;
 
   public Case(String subject,Jeu jeu){
@@ -48,14 +48,12 @@ public void mouseEntered(MouseEvent e) {
 public void mouseExited(MouseEvent e) {
   this.setBackground(Color.GRAY);
 }
-
 public void mouseClicked(MouseEvent e) {
-  System.out.println("clicked");
   if(this.subject != ""){
   int i = Integer.parseInt(this.subject);
   if (this.jeu.getVoisins().contains(i)){
-
-    this.jeu=this.jeu.play(i);
+    this.jeu.coup(i);
+    this.jeu.affiche();
     }
   }
 }

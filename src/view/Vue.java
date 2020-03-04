@@ -31,5 +31,4 @@ public class Vue extends JPanel{
   }
 
 
-
 }

@@ -44,7 +44,6 @@ public class Jeu{
 
   public ArrayList<Integer> getVoisins(){
     ArrayList<Integer> coord0 = this.saveJeu.get(0);
-    int max= coord0.get(0) + coord0.get(1);
     ArrayList<Integer> voisins= new ArrayList<>();
     for (int i=0;i<(this.grille.getLargeur()*this.grille.getHauteur());i++){
       if(this.saveJeu.get(i).get(0)==coord0.get(0)){
@@ -79,7 +78,6 @@ public class Jeu{
     return newJeu;
   }
 
-
   public void shuffle(int difficulty){
     Random rand = new Random();
     Jeu n = new Jeu(this.grille);
@@ -88,6 +86,10 @@ public class Jeu{
       n=n.play(n.getVoisins().get(choix));
     }
   this.setGrille(n.getGrille());
+  }
+  public void coup(int coup){
+    this.grille=this.play(coup).getGrille();
+    this.saveJeu=this.play(coup).getSaveJeu();
   }
 
 }

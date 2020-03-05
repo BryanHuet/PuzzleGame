@@ -6,8 +6,7 @@ import java.util.*;
 public class Main{
   public static void main(String[] args){
     Grille g = new Grille (3,3);
-    Jeu etat=new Jeu(g);
-
+    Jeu etat=new Jeu(g,50);
     etat.affiche();
 
     new JeuGUI(etat);

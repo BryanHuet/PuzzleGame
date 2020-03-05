@@ -5,14 +5,17 @@ public class Jeu extends AbstractModeleEcoutable{
   private Grille grille;
   private HashMap<Integer,ArrayList<Integer>> saveJeu;
   public static boolean etat0=true;
+  private int difficulty;
 
-  public Jeu(Grille grille){
+  public Jeu(Grille grille,int difficulty){
     super();
     this.grille=grille;
+    this.difficulty=difficulty;
     this.ecouteurs=new ArrayList<>();
+
     if (etat0){
       etat0=false;
-      shuffle(10);
+      shuffle(this.difficulty);
     }
     this.saveJeu=this.saveJeu();
   }
@@ -29,6 +32,26 @@ public class Jeu extends AbstractModeleEcoutable{
   public void affiche(){
     this.grille.affiche();
   }
+
+  public boolean isFinished(){
+    int x=1;
+    for (int i=0;i<this.grille.getLargeur();i++){
+      for(int j=0;j<this.grille.getHauteur();j++){
+        if (x==this.grille.getLargeur()*this.grille.getHauteur()){
+          return true;
+        }
+        ArrayList<Integer> coordx = this.getSaveJeu().get(x);
+        if (coordx.get(0)!=i){
+          return false;
+        }
+        if (coordx.get(1)!=j){
+            return false;
+          }
+        x=x+1;
+        }
+      }
+    return true;
+}
 
   public HashMap<Integer,ArrayList<Integer>> saveJeu(){
     HashMap<Integer,ArrayList<Integer>> save = new HashMap<>();
@@ -76,13 +99,13 @@ public class Jeu extends AbstractModeleEcoutable{
 
     newGrille.setGrille(coord0.get(0),coord0.get(1),coup);
     newGrille.setGrille(coordCoup.get(0),coordCoup.get(1),0);
-    Jeu newJeu = new Jeu(newGrille);
+    Jeu newJeu = new Jeu(newGrille,this.difficulty);
     return newJeu;
   }
 
   public void shuffle(int difficulty){
     Random rand = new Random();
-    Jeu n = new Jeu(this.grille);
+    Jeu n = new Jeu(this.grille,this.difficulty);
     for (int i=0; i<difficulty;i++){
       int choix=rand.nextInt(n.getVoisins().size());
       n=n.play(n.getVoisins().get(choix));

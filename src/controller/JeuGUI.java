@@ -19,6 +19,6 @@ public class JeuGUI extends JFrame{
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setResizable(true);
     this.pack();
-    this.setSize(700,700);
+    this.setSize(900,900);
   }
 }

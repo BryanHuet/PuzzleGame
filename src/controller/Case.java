@@ -5,7 +5,7 @@ import java.awt.*;
 import src.model.*;
 import java.awt.event.*;
 
-public class Case extends JPanel implements MouseListener, EcouteurModele{
+public class Case extends JPanel implements MouseListener{
   private String subject;
   private Jeu jeu;
 
@@ -14,7 +14,6 @@ public class Case extends JPanel implements MouseListener, EcouteurModele{
     this.subject=subject;
     this.setBackground(Color.GRAY);
     addMouseListener(this);
-    this.jeu.ajoutEcouteur(this);
   }
 
   public void setSubject(String subject){
@@ -41,10 +40,12 @@ public void mouseReleased(MouseEvent e) {
 }
 
 public void mouseEntered(MouseEvent e) {
-  if(this.subject != ""){
-  int i = Integer.parseInt(this.subject);
-  if (this.jeu.getVoisins().contains(i)){
-    this.setBackground(Color.GREEN);
+  if(!this.jeu.isFinished()){
+    if(this.subject != ""){
+    int i = Integer.parseInt(this.subject);
+    if (this.jeu.getVoisins().contains(i)){
+      this.setBackground(Color.GREEN);
+      }
     }
   }
 }
@@ -53,17 +54,15 @@ public void mouseExited(MouseEvent e) {
   this.setBackground(Color.GRAY);
 }
 public void mouseClicked(MouseEvent e) {
-  if(this.subject != ""){
-  int i = Integer.parseInt(this.subject);
-  if (this.jeu.getVoisins().contains(i)){
-    this.jeu.coup(i);
-    this.jeu.affiche();
+  if(!this.jeu.isFinished()){
+    if(this.subject != ""){
+    int i = Integer.parseInt(this.subject);
+    if (this.jeu.getVoisins().contains(i)){
+      this.jeu.coup(i);
+      this.jeu.affiche();
+        }
     }
   }
 }
-  public void modeleMisAJour(Object source){
-    System.out.println("helloCase");
-    this.repaint();
-  };
 
 }

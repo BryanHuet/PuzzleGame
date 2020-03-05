@@ -4,16 +4,14 @@ public class Grille{
   private int largeur;
   private int hauteur;
   private int[][] grille;
-  private int difficulty;
 
   public Grille(int largeur,int hauteur){
     this.largeur=largeur;
     this.hauteur=hauteur;
     this.grille=this.construct();
-    this.difficulty=difficulty;
   }
 
-
+//getters
   public int getLargeur(){
     return this.largeur;
   }
@@ -27,10 +25,12 @@ public class Grille{
     return this.largeur*this.hauteur;
   }
 
+//setter
   public void setGrille(int i,int j,int val){
     this.grille[i][j]=val;
   }
 
+//methodes
   public int[][] construct(){
     int[][] g= new int[this.largeur][this.hauteur];
     int cmpt=1;
@@ -44,7 +44,9 @@ public class Grille{
     return g;
   }
 
+
   public void affiche(){
+    //affiche la grille
     System.out.println();
     for(int i=0;i<this.largeur;i++){
       for(int j=0;j<this.hauteur;j++){

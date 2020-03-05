@@ -7,12 +7,15 @@ import src.view.*;
 import java.awt.event.*;
 
 public class JeuGUI extends JFrame{
-  private Vue vue;
+  private Img vue;
   private Jeu jeu;
+
 
   public JeuGUI(Jeu jeu){
     this.jeu=jeu;
-    this.vue = new Vue(jeu);
+    //this.vue = new Vue(jeu);
+    this.vue= new Img();
+    this.setTitle("15-Puzzle");
     this.setVisible(true);
     this.setLayout(new BorderLayout());
     this.add(this.vue,BorderLayout.CENTER);

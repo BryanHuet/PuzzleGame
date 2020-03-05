@@ -16,12 +16,10 @@ public class Case extends JPanel implements MouseListener{
     addMouseListener(this);
   }
 
-  public void setSubject(String subject){
-    this.subject=subject;
-  }
 
   @Override
   public void paintComponent(Graphics g){
+    //On dessine l'apparence d'une case
     super.paintComponent(g);
     g.setColor(Color.BLACK);
     Font myFont = new Font ("Courier New", 1, 50);
@@ -33,36 +31,41 @@ public class Case extends JPanel implements MouseListener{
     }
   }
 
-  public void mousePressed(MouseEvent e) {
-}
+//Implementation de MouseListener
 
-public void mouseReleased(MouseEvent e) {
-}
 
-public void mouseEntered(MouseEvent e) {
-  if(!this.jeu.isFinished()){
-    if(this.subject != ""){
-    int i = Integer.parseInt(this.subject);
-    if (this.jeu.getVoisins().contains(i)){
-      this.setBackground(Color.GREEN);
+  public void mouseEntered(MouseEvent e) {
+    //Event qui permet de modifier la couleur de fond, lorsque la souris passe
+    //sur un case qui permet de jouer un coup 
+    if(!this.jeu.isFinished()){
+      if(this.subject != ""){
+      int i = Integer.parseInt(this.subject);
+        if (this.jeu.getVoisins().contains(i)){
+          this.setBackground(Color.GREEN);
+        }
       }
     }
   }
-}
 
-public void mouseExited(MouseEvent e) {
-  this.setBackground(Color.GRAY);
-}
-public void mouseClicked(MouseEvent e) {
-  if(!this.jeu.isFinished()){
-    if(this.subject != ""){
-    int i = Integer.parseInt(this.subject);
-    if (this.jeu.getVoisins().contains(i)){
-      this.jeu.coup(i);
-      this.jeu.affiche();
+  public void mouseExited(MouseEvent e) {
+    this.setBackground(Color.GRAY);
+  }
+
+  public void mouseClicked(MouseEvent e) {
+    // Lors du click on recup le sujet de la case, et on applique le coup sur
+    // le jeu
+    if(!this.jeu.isFinished()){
+      if(this.subject != ""){
+      int i = Integer.parseInt(this.subject);
+      if (this.jeu.getVoisins().contains(i)){
+        this.jeu.coup(i);
         }
+      }
     }
   }
-}
+
+    public void mousePressed(MouseEvent e) {}
+    public void mouseReleased(MouseEvent e){}
+
 
 }

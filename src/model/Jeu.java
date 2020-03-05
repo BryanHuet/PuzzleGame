@@ -17,23 +17,31 @@ public class Jeu extends AbstractModeleEcoutable{
       etat0=false;
       shuffle(this.difficulty);
     }
+
     this.saveJeu=this.saveJeu();
   }
 
+//getters
   public Grille getGrille(){
     return this.grille;
   }
   public HashMap<Integer,ArrayList<Integer>> getSaveJeu(){
     return this.saveJeu;
   }
+
+//setters
   public void setGrille(Grille grille){
     this.grille=grille;
   }
+
   public void affiche(){
+    //affiche la grille
     this.grille.affiche();
   }
 
   public boolean isFinished(){
+    //On cherche a savoir si le jeu est fini; On parcourt donc l'emplacement
+    //de chaque case pour verifier sa valeur;
     int x=1;
     for (int i=0;i<this.grille.getLargeur();i++){
       for(int j=0;j<this.grille.getHauteur();j++){
@@ -54,6 +62,7 @@ public class Jeu extends AbstractModeleEcoutable{
 }
 
   public HashMap<Integer,ArrayList<Integer>> saveJeu(){
+    //stock dans une hashMap la position de chaque case;
     HashMap<Integer,ArrayList<Integer>> save = new HashMap<>();
     for(int i=0;i<this.grille.getLargeur();i++){
       for (int j=0;j<this.grille.getHauteur();j++){
@@ -68,6 +77,7 @@ public class Jeu extends AbstractModeleEcoutable{
 
 
   public ArrayList<Integer> getVoisins(){
+    //On stock dans une liste les voisins de la case 0 (correspond a la case vide)
     ArrayList<Integer> coord0 = this.saveJeu.get(0);
     ArrayList<Integer> voisins= new ArrayList<>();
     for (int i=0;i<(this.grille.getLargeur()*this.grille.getHauteur());i++){
@@ -86,6 +96,7 @@ public class Jeu extends AbstractModeleEcoutable{
   }
 
   public Jeu play(int coup){
+    //On intervertit la place de la case 0 et la case coup;
     if (! this.getVoisins().contains(coup)){
       System.out.println("impossible");
       return this;
@@ -104,6 +115,7 @@ public class Jeu extends AbstractModeleEcoutable{
   }
 
   public void shuffle(int difficulty){
+    //fonction qui joue x(=difficulty) coups si et seulement si etat0=true;
     Random rand = new Random();
     Jeu n = new Jeu(this.grille,this.difficulty);
     for (int i=0; i<difficulty;i++){
@@ -112,7 +124,9 @@ public class Jeu extends AbstractModeleEcoutable{
     }
   this.setGrille(n.getGrille());
   }
+
   public void coup(int coup){
+    //joue un coup;
     this.grille=this.play(coup).getGrille();
     this.saveJeu=this.play(coup).getSaveJeu();
     fireChangement();

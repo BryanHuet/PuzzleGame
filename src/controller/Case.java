@@ -5,8 +5,8 @@ import java.awt.*;
 import src.model.*;
 import java.awt.event.*;
 
-public class Case extends JPanel implements MouseListener{
-  public String subject;
+public class Case extends JPanel implements MouseListener, EcouteurModele{
+  private String subject;
   private Jeu jeu;
 
   public Case(String subject,Jeu jeu){
@@ -14,8 +14,12 @@ public class Case extends JPanel implements MouseListener{
     this.subject=subject;
     this.setBackground(Color.GRAY);
     addMouseListener(this);
+    this.jeu.ajoutEcouteur(this);
   }
 
+  public void setSubject(String subject){
+    this.subject=subject;
+  }
 
   @Override
   public void paintComponent(Graphics g){
@@ -54,10 +58,12 @@ public void mouseClicked(MouseEvent e) {
   if (this.jeu.getVoisins().contains(i)){
     this.jeu.coup(i);
     this.jeu.affiche();
-    this.subject="";
-    this.repaint();
     }
   }
 }
+  public void modeleMisAJour(Object source){
+    System.out.println("helloCase");
+    this.repaint();
+  };
 
 }

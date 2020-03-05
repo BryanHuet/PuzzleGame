@@ -7,7 +7,9 @@ public class Jeu extends AbstractModeleEcoutable{
   public static boolean etat0=true;
 
   public Jeu(Grille grille){
+    super();
     this.grille=grille;
+    this.ecouteurs=new ArrayList<>();
     if (etat0){
       etat0=false;
       shuffle(10);

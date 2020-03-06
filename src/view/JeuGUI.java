@@ -7,14 +7,14 @@ import src.view.*;
 import java.awt.event.*;
 
 public class JeuGUI extends JFrame{
-  private Img vue;
+  private Vue vue;
   private Jeu jeu;
-
 
   public JeuGUI(Jeu jeu){
     this.jeu=jeu;
-    //this.vue = new Vue(jeu);
-    this.vue= new Img();
+    Img im = new Img(jeu,"src/img/cat.jpg");
+    this.vue = new Vue(jeu,im);
+    //this.vue= new Img(jeu);
     this.setTitle("15-Puzzle");
     this.setVisible(true);
     this.setLayout(new BorderLayout());
@@ -23,5 +23,6 @@ public class JeuGUI extends JFrame{
     this.setResizable(true);
     this.pack();
     this.setSize(900,900);
+    System.out.println(this.getSize());
   }
 }

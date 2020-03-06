@@ -6,6 +6,6 @@ import java.util.*;
 public class Main{
   public static void main(String[] args){
 
-    new JeuGUI(new Jeu(new Grille(3,3),50));
+    new JeuGUI(new Jeu(new Grille(4,4),1));
   }
 }

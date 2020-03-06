@@ -10,41 +10,45 @@ public class Vue extends JPanel implements EcouteurModele{
 
   public final static int DIM = 200; //doit etre divisible par 10;
   private Jeu jeu;
+  private Img im;
 
-  public Vue(Jeu jeu){
+  public Vue(Jeu jeu,Img im){
+    super();
     this.jeu=jeu;
+    this.im=im;
     this.jeu.ajoutEcouteur(this);
     this.setBackground(Color.GRAY);
     this.setLayout(new GridBagLayout());
+    setVisible(true);
     setup();
-
   }
 
 
-    public void setup(){
+  public void setup(){
 
     GridBagConstraints c = new GridBagConstraints();
     for(int i=0;i<this.jeu.getGrille().getLargeur();i++){
       for (int j=0;j<this.jeu.getGrille().getHauteur();j++){
         if (this.jeu.getGrille().getGrille()[i][j]!=0){
-          c.weightx=0.5;
-          c.weighty=0.5;
+          c.weightx=0;
+          c.weighty=0;
           c.ipady=DIM;
           c.ipadx=DIM;
           c.gridx=this.jeu.getSaveJeu().get(this.jeu.getGrille().getGrille()[i][j]).get(1);
           c.gridy=this.jeu.getSaveJeu().get(this.jeu.getGrille().getGrille()[i][j]).get(0);
-           this.add(new Case(this.jeu.getGrille().getGrille()[i][j]+"",this.jeu),c);
+          this.add(new Case(this.jeu.getGrille().getGrille()[i][j]+"",this.jeu,this.im,DIM),c);
 
       }else{
-        c.weightx=0.5;
-        c.weighty=0.5;
         c.gridx=j;
         c.gridy=i;
         c.ipady=DIM;
         c.ipadx=DIM;
-        this.add(new Case("",this.jeu),c);
+        this.add(new Case("",this.jeu,this.im,DIM),c);
         }
       }
+    }
+    for (Component co: this.getComponents()){
+      co.requestFocus();
     }
   }
 

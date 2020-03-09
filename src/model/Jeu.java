@@ -132,4 +132,11 @@ public class Jeu extends AbstractModeleEcoutable{
     fireChangement();
   }
 
+
+  public void reset(){
+    this.etat0=true;
+    shuffle(this.difficulty);
+    fireChangement();
+  }
+
 }

@@ -1,10 +1,11 @@
-package src.view;
+package src.controller;
 import javax.swing.*;
 import java.util.*;
 import java.awt.*;
 import src.model.*;
 import java.awt.event.*;
 import java.awt.image.*;
+import src.view.*;
 public class Case extends JPanel implements MouseListener, KeyListener{
   private String subject;
   private Jeu jeu;

@@ -33,14 +33,18 @@ public class Win extends JPanel{
     this.restart.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e){
+        setDifficulty();
         Win.this.jeu.reset();
         Win.this.setVisible(false);
         Win.this.vue.setVisible(true);
         }
       });
+  }
 
 
-
+  private void setDifficulty(){
+    int diff=Integer.parseInt(this.difficulty.getText());
+    this.jeu.setDifficulty(diff);
   }
 
 

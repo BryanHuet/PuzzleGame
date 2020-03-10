@@ -36,6 +36,9 @@ public class Jeu extends AbstractModeleEcoutable{
   public void setGrille(Grille grille){
     this.grille=grille;
   }
+  public void setDifficulty(int diff){
+    this.difficulty=diff;
+  }
 
   public void affiche(){
     //affiche la grille

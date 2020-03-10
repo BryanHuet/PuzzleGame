@@ -23,7 +23,6 @@ public class Vue extends JPanel implements EcouteurModele{
     setup();
   }
 
-
   public void setup(){
 
     GridBagConstraints c = new GridBagConstraints();

@@ -18,6 +18,7 @@ public class Img extends JPanel{
   private Jeu jeu;
 
   public Img(Jeu jeu, String path){
+    super();
     this.jeu=jeu;
     try {
     			this.imLoad = ImageIO.read(new File(path));

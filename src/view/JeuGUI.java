@@ -12,9 +12,10 @@ public class JeuGUI extends JFrame implements EcouteurModele{
   private Jeu jeu;
 
   public JeuGUI(Jeu jeu){
+    super();
     this.jeu=jeu;
     this.jeu.ajoutEcouteur(this);
-    Img im = new Img(jeu,"src/img/cat.jpg");
+    Img im = new Img(jeu,"src/img/lena.png");
     this.vue = new Vue(jeu,im);
     //this.vue= new Img(jeu);
     this.setTitle("15-Puzzle");
@@ -24,16 +25,16 @@ public class JeuGUI extends JFrame implements EcouteurModele{
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setResizable(true);
     this.pack();
-    this.setSize(900,900);
-    System.out.println(this.getSize());
+    //this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+    this.setSize(1000,1000);
 
   }
 
   public void modeleMisAJour(Object source){
-    System.out.println("ok");
+    Win win = new Win(this.jeu,this.vue);
     if(this.jeu.isFinished()){
-      Win win = new Win(this.jeu);
       this.add(win,BorderLayout.EAST);
     }
+
   }
 }

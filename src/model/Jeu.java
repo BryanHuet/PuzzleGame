@@ -25,6 +25,9 @@ public class Jeu extends AbstractModeleEcoutable{
   public Grille getGrille(){
     return this.grille;
   }
+  public int getDifficulty(){
+    return this.difficulty;
+  }
   public HashMap<Integer,ArrayList<Integer>> getSaveJeu(){
     return this.saveJeu;
   }
@@ -134,8 +137,9 @@ public class Jeu extends AbstractModeleEcoutable{
 
 
   public void reset(){
-    this.etat0=true;
-    shuffle(this.difficulty);
+    this.saveJeu = new HashMap<>();
+    this.shuffle(this.difficulty);
+    this.saveJeu = this.saveJeu();
     fireChangement();
   }
 

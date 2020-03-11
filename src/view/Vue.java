@@ -8,13 +8,14 @@ import src.controller.*;
 
 public class Vue extends JPanel implements EcouteurModele{
 
-  public final static int DIM = 200; //doit etre divisible par 10;
+  private int DIM; //doit etre divisible par 10;
   private Jeu jeu;
   private Img im;
 
-  public Vue(Jeu jeu,Img im){
+  public Vue(Jeu jeu,int dim,Img im){
     super();
     this.jeu=jeu;
+    this.DIM=dim;
     this.im=im;
     this.jeu.ajoutEcouteur(this);
     this.setBackground(Color.GRAY);
@@ -29,8 +30,8 @@ public class Vue extends JPanel implements EcouteurModele{
     for(int i=0;i<this.jeu.getGrille().getLargeur();i++){
       for (int j=0;j<this.jeu.getGrille().getHauteur();j++){
         if (this.jeu.getGrille().getGrille()[i][j]!=0){
-          c.weightx=0;
-          c.weighty=0;
+          //c.weightx=0;
+          //c.weighty=0;
           c.ipady=DIM;
           c.ipadx=DIM;
           c.gridx=this.jeu.getSaveJeu().get(this.jeu.getGrille().getGrille()[i][j]).get(1);

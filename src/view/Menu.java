@@ -18,11 +18,10 @@ public class Menu extends JMenuBar{
     super();
     this.jeu=jeu;
     this.setBackground(Color.GRAY);
-    JButton menu = new JButton("Personalisation");
+    JButton menu = new JButton("Personnalisation");
     menu.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e){
-          System.out.println("ok");
           new MenuGUI(Menu.this.jeu);
         }
     });

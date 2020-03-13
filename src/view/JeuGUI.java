@@ -25,9 +25,10 @@ public class JeuGUI extends JFrame implements EcouteurModele{
     this.add(this.vue,BorderLayout.CENTER);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setResizable(true);
-    this.setSize(800,800);
     this.setJMenuBar(new Menu(this.jeu));
-    this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+    this.setSize(800,800);
+
+    this.setLocationRelativeTo(null);
     this.win=new Win(this.jeu);
 
   }

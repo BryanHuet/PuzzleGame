@@ -140,6 +140,7 @@ public class Jeu extends AbstractModeleEcoutable{
 
 
   public void reset(){
+    this.grille=new Grille(this.grille.getLargeur(),this.grille.getHauteur());
     this.saveJeu = new HashMap<>();
     this.shuffle(this.difficulty);
     this.saveJeu = this.saveJeu();

@@ -11,22 +11,30 @@ public class MenuGUI extends JFrame{
 
   private Jeu jeu;
   private Restart res;
-  private JTextField difficulty;
-
+  private Field difficulty;
+  private Field setGrille;
 
   public MenuGUI(Jeu jeu){
     super();
     this.jeu=jeu;
-    this.setResizable(true);
+    //this.setResizable(true);
+    this.setLayout(new FlowLayout(FlowLayout.CENTER,100,50));
+    this.setTitle("Personnalisation");
 
-    this.setLayout(new GridLayout(2,2));
+    this.res=new Restart(this.jeu);
+    this.difficulty=new Field("Difficulté",true);
+    this.setGrille=new Field("taille grille \"n,m\"",false);
 
-    this.difficulty=new JTextField(15);
+
+    this.res.addEntries(this.difficulty);
+    this.res.addEntries(this.setGrille);
     this.add(this.difficulty);
-    this.add(new Restart(this.jeu));
+    this.add(this.setGrille);
+    this.add(this.res);
     this.setVisible(true);
-    this.setSize(100,100);
-
+    this.setSize(300,300);
+    this.setLocationRelativeTo(null);
+    this.setBackground(Color.GRAY);
   }
 
 

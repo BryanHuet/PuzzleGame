@@ -10,11 +10,13 @@ import src.view.*;
 public class Restart extends JButton implements ActionListener{
 
   private Jeu jeu;
+  private Vue vue;
   private ArrayList<Field> entries;
 
 
-  public Restart(Jeu jeu){
+  public Restart(Jeu jeu, Vue vue){
     super("Restart");
+    this.vue=vue;
     this.jeu=jeu;
     this.addActionListener(this);
     this.setVisible(true);
@@ -29,9 +31,18 @@ public class Restart extends JButton implements ActionListener{
   }
 
   public void actionPerformed(ActionEvent e){
-    String recup="";
-    System.out.println(recup);
-    //this.jeu.setDifficulty(diff);
+    if (! this.entries.isEmpty()){
+      for(Field field: this.entries){
+        if (! field.getNumber().isEmpty()){
+          if(field.getIsDifficult()){
+            this.jeu.setDifficulty(field.getNumber().get(0));
+          }else{
+            this.jeu.setGrille(new Grille(field.getNumber().get(0),field.getNumber().get(1)));
+            this.vue.getIm().cropImage();
+          }
+        }
+      }
+    }
     this.jeu.reset();
     }
 

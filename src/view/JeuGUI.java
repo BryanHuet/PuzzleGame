@@ -11,13 +11,14 @@ public class JeuGUI extends JFrame implements EcouteurModele{
   private Vue vue;
   private Jeu jeu;
   private Win win;
+  private Img im;
 
   public JeuGUI(Jeu jeu){
     super();
     this.jeu=jeu;
     this.jeu.ajoutEcouteur(this);
-    Img im = new Img(jeu,"src/img/lena.png");
-    this.vue = new Vue(jeu,200,im);
+    this.im = new Img(this.jeu,"src/img/lena.png");
+    this.vue = new Vue(this.jeu,this.im);
     //this.vue= new Img(jeu);
     this.setTitle("15-Puzzle");
     this.setVisible(true);
@@ -25,11 +26,11 @@ public class JeuGUI extends JFrame implements EcouteurModele{
     this.add(this.vue,BorderLayout.CENTER);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setResizable(true);
-    this.setJMenuBar(new Menu(this.jeu));
+    this.setJMenuBar(new Menu(this.jeu,this.vue));
     this.setSize(800,800);
 
     this.setLocationRelativeTo(null);
-    this.win=new Win(this.jeu);
+    this.win=new Win(this.jeu,this.vue);
 
   }
 

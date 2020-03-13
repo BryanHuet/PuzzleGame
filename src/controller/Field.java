@@ -21,6 +21,27 @@ public class Field extends JTextField implements MouseListener,KeyListener{
     addKeyListener(this);
   }
 
+  public Boolean getIsDifficult(){
+    return this.isDifficult;
+  }
+
+  public ArrayList<Integer> getNumber(){
+    ArrayList<Integer> numbers = new ArrayList<>();
+    if (isDifficult){
+      try{
+        numbers.add(Integer.parseInt(this.getText()));
+      }
+      catch(Exception e){}
+    }else{
+      try{
+        String[] getNM = this.getText().split(",");
+        numbers.add(Integer.parseInt(getNM[0]));
+        numbers.add(Integer.parseInt(getNM[1]));
+      }
+      catch(Exception e){}
+    }
+    return numbers;
+  }
 
 
 

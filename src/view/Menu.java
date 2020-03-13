@@ -13,16 +13,18 @@ import javax.swing.JMenuItem;
 public class Menu extends JMenuBar{
 
   private Jeu jeu;
+  private Vue vue;
 
-  public Menu(Jeu jeu){
+  public Menu(Jeu jeu,Vue vue){
     super();
     this.jeu=jeu;
+    this.vue=vue;
     this.setBackground(Color.GRAY);
     JButton menu = new JButton("Personnalisation");
     menu.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e){
-          new MenuGUI(Menu.this.jeu);
+          new MenuGUI(Menu.this.jeu,Menu.this.vue);
         }
     });
     this.add(menu);

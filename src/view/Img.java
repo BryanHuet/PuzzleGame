@@ -16,18 +16,22 @@ public class Img extends JPanel{
   private BufferedImage imLoad;
   private HashMap<Integer,BufferedImage> crop;
   private Jeu jeu;
+  private String path;
 
   public Img(Jeu jeu, String path){
     super();
     this.jeu=jeu;
+    this.path=path;
     try {
-    			this.imLoad = ImageIO.read(new File(path));
+    			this.imLoad = ImageIO.read(new File(this.path));
     		}
     		catch(IOException e) {
     			e.printStackTrace();
     		}
 
-    this.crop=new HashMap<>();
+    if(this.imLoad.getHeight()!=this.imLoad.getWidth()){
+        this.cropCarre();
+      }
     this.cropImage();
 
   }
@@ -35,8 +39,12 @@ public class Img extends JPanel{
     public HashMap<Integer,BufferedImage> getImgCrop(){
         return this.crop;
     }
+    public void setPath(String path){
+      this.path=path;
+    }
 
-    private void cropImage(){
+    public void cropImage(){
+      this.crop=new HashMap<>();
       int x=1;
       int dimx=this.imLoad.getHeight()/this.jeu.getGrille().getHauteur();
       int dimy=this.imLoad.getWidth()/this.jeu.getGrille().getLargeur();
@@ -51,6 +59,17 @@ public class Img extends JPanel{
           x=x+1;
         }
       }
+    }
+
+    public void cropCarre(){
+      int height=this.imLoad.getHeight();
+      int width=this.imLoad.getWidth();
+      if(height>width){
+        this.imLoad=this.imLoad.getSubimage(0,0,width,width);
+      }else{
+        this.imLoad=this.imLoad.getSubimage(0,0,height,height);
+      }
+
     }
 
 

@@ -1,4 +1,4 @@
-package grid;
+package taquin.view;
 
 
 import javax.swing.*;

@@ -58,8 +58,6 @@ public class GUI extends JFrame {
                 
                 panel.add(box); // Ajout des case sur la grille
 
-               
-
             }
         
          frame.setVisible(true); //permet que la fenetre soit visible

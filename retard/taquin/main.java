@@ -8,7 +8,10 @@ public class main{
 		new GUI();
 
 		Grille grille = new Grille(3,3);
-		//grille.melanger(10);
-		grille.afficher();
+		Jeu jeu = new Jeu(grille);
+		grille.melanger(10);
+	 	grille.afficher();
+	 	jeu.action(1);
+	 	grille.afficher();
 	}
 }

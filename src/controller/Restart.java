@@ -1,10 +1,8 @@
 package src.controller;
 import javax.swing.*;
 import java.util.*;
-import java.awt.*;
 import src.model.*;
 import java.awt.event.*;
-import java.awt.image.*;
 import src.view.*;
 
 public class Restart extends JButton implements ActionListener{
@@ -25,9 +23,6 @@ public class Restart extends JButton implements ActionListener{
 
   public void addEntries(Field field){
     this.entries.add(field);
-  }
-  public void removeEntries(Field field){
-    this.entries.remove(field);
   }
 
   public void actionPerformed(ActionEvent e){

@@ -51,7 +51,7 @@ public class Jeu extends AbstractModeleEcoutable{
     int x=1;
     for (int i=0;i<this.grille.getLargeur();i++){
       for(int j=0;j<this.grille.getHauteur();j++){
-        if (x==this.grille.getLargeur()*this.grille.getHauteur()){
+        if (x==this.grille.getSize()){
           return true;
         }
         ArrayList<Integer> coordx = this.getSaveJeu().get(x);
@@ -87,12 +87,12 @@ public class Jeu extends AbstractModeleEcoutable{
     ArrayList<Integer> coord0 = this.saveJeu.get(0);
     ArrayList<Integer> voisins= new ArrayList<>();
     for (int i=0;i<(this.grille.getLargeur()*this.grille.getHauteur());i++){
-      if(this.saveJeu.get(i).get(0)==coord0.get(0)){
+      if(this.saveJeu.get(i).get(0).equals(coord0.get(0))){
         if (this.saveJeu.get(i).get(1)==coord0.get(1)+1 || this.saveJeu.get(i).get(1)==coord0.get(1)-1){
           voisins.add(i);
         }
       }
-      if(this.saveJeu.get(i).get(1)==coord0.get(1)){
+      if(this.saveJeu.get(i).get(1).equals(coord0.get(1))){
         if(this.saveJeu.get(i).get(0)==coord0.get(0)+1 || this.saveJeu.get(i).get(0)==coord0.get(0)-1){
           voisins.add(i);
         }
@@ -116,8 +116,7 @@ public class Jeu extends AbstractModeleEcoutable{
 
     newGrille.setGrille(coord0.get(0),coord0.get(1),coup);
     newGrille.setGrille(coordCoup.get(0),coordCoup.get(1),0);
-    Jeu newJeu = new Jeu(newGrille,this.difficulty);
-    return newJeu;
+    return new Jeu(newGrille,this.difficulty);
   }
 
   public void shuffle(int difficulty){

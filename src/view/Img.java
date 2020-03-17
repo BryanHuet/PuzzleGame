@@ -2,10 +2,7 @@ package src.view;
 
 import javax.swing.*;
 import java.util.*;
-import java.awt.*;
-import java.awt.event.*;
 import src.model.*;
-import src.controller.*;
 
 import java.awt.image.*;
 import java.io.*;
@@ -16,18 +13,16 @@ public class Img extends JPanel{
   private BufferedImage imLoad;
   private HashMap<Integer,BufferedImage> crop;
   private Jeu jeu;
-  private String path;
 
   public Img(Jeu jeu, String path){
     super();
     this.jeu=jeu;
-    this.path=path;
     try {
-    			this.imLoad = ImageIO.read(new File(this.path));
-    		}
-    		catch(IOException e) {
-    			e.printStackTrace();
-    		}
+        this.imLoad = ImageIO.read(new File(path));
+        }
+    catch(IOException e) {
+        e.printStackTrace();
+        }
 
     if(this.imLoad.getHeight()!=this.imLoad.getWidth()){
         this.cropCarre();
@@ -38,9 +33,6 @@ public class Img extends JPanel{
 
     public HashMap<Integer,BufferedImage> getImgCrop(){
         return this.crop;
-    }
-    public void setPath(String path){
-      this.path=path;
     }
 
     public void cropImage(){

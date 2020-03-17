@@ -1,10 +1,8 @@
 package src.model;
 
 public interface ModeleEcoutable{
-
-
-  public void ajoutEcouteur(EcouteurModele e);
-  public void retraitEcouteur(EcouteurModele e);
+  void ajoutEcouteur(EcouteurModele e);
+  void retraitEcouteur(EcouteurModele e);
 
 
 }

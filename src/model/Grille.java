@@ -21,6 +21,7 @@ public class Grille{
   public int[][] getGrille(){
     return this.grille;
   }
+
   public int getSize(){
     return this.largeur*this.hauteur;
   }

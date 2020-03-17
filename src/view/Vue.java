@@ -1,14 +1,11 @@
 package src.view;
 import javax.swing.*;
-import java.util.*;
 import java.awt.*;
-import java.awt.event.*;
 import src.model.*;
 import src.controller.*;
 
 public class Vue extends JPanel implements EcouteurModele{
 
-  private static int DIM = 500; //doit etre divisible par 10;
   private Jeu jeu;
   private Img im;
 
@@ -31,7 +28,8 @@ public class Vue extends JPanel implements EcouteurModele{
   }
 
   public void setup(){
-    int dimCase = DIM/this.jeu.getGrille().getLargeur();
+    int DIM = 500;
+    int dimCase = DIM /this.jeu.getGrille().getLargeur();
     GridBagConstraints c = new GridBagConstraints();
     for(int i=0;i<this.jeu.getGrille().getLargeur();i++){
       for (int j=0;j<this.jeu.getGrille().getHauteur();j++){

@@ -1,14 +1,11 @@
 package src.view;
 import javax.swing.*;
-import java.util.*;
 import java.awt.*;
 import src.model.*;
-import src.view.*;
 import src.controller.*;
 import java.awt.event.*;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
-import javax.swing.JMenuItem;
 
 public class Menu extends JMenuBar{
 

@@ -32,9 +32,9 @@ public class Case extends JPanel implements MouseListener, KeyListener{
     //On dessine l'apparence d'une case
     super.paintComponent(g);
     g.setColor(Color.BLACK);
-    Font myFont = new Font ("Courier New", 1, 50);
+    Font myFont = new Font ("Courier New", Font.BOLD, 50);
     g.setFont(myFont);
-    if (this.subject!=""){
+    if (! this.subject.equals("")){
       int i = Integer.parseInt(this.subject);
       BufferedImage im2=im.getImgCrop().get(i);
       //g.drawRect(0,0,this.getWidth(),this.getHeight());
@@ -51,7 +51,7 @@ public class Case extends JPanel implements MouseListener, KeyListener{
     //Event qui permet de modifier la couleur de fond, lorsque la souris passe
     //sur un case qui permet de jouer un coup
     if(!this.jeu.isFinished()){
-      if(this.subject != ""){
+      if(! this.subject.equals("")){
       int i = Integer.parseInt(this.subject);
         if (this.jeu.getVoisins().contains(i)){
           this.setBackground(Color.BLACK);
@@ -68,7 +68,7 @@ public class Case extends JPanel implements MouseListener, KeyListener{
     // Lors du click on recup le sujet de la case, et on applique le coup sur
     // le jeu
     if(!this.jeu.isFinished()){
-      if(this.subject != ""){
+      if(! this.subject.equals("")){
       int i = Integer.parseInt(this.subject);
       if (this.jeu.getVoisins().contains(i)){
         this.jeu.coup(i);

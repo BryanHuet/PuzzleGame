@@ -12,10 +12,6 @@ public class MenuGUI extends JFrame{
 
   private Jeu jeu;
   private Vue vue;
-  private Restart res;
-  private Field difficulty;
-  private Field setGrille;
-  private JButton setIm;
 
   public MenuGUI(Jeu jeu,Vue vue){
     super();
@@ -25,11 +21,11 @@ public class MenuGUI extends JFrame{
     this.setLayout(new FlowLayout(FlowLayout.CENTER,50,30));
     this.setTitle("Personnalisation");
 
-    this.res=new Restart(this.jeu,this.vue);
-    this.difficulty=new Field("Difficulté",true);
-    this.setGrille=new Field("taille grille \"n,m\"",false);
-    this.setIm=new JButton("Charger image");
-    this.setIm.addActionListener(new ActionListener() {
+    Restart res = new Restart(this.jeu, this.vue);
+    Field difficulty = new Field("Difficulté", true);
+    Field setGrille = new Field("taille grille \"n,m\"", false);
+    JButton setIm = new JButton("Charger image");
+    setIm.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e){
           JFileChooser fileChooser = new JFileChooser(new File("."));
@@ -48,13 +44,13 @@ public class MenuGUI extends JFrame{
           }
         }
     });
-    this.res.addEntries(this.difficulty);
-    this.res.addEntries(this.setGrille);
+    res.addEntries(difficulty);
+    res.addEntries(setGrille);
 
-    this.add(this.setIm);
-    this.add(this.difficulty);
-    this.add(this.setGrille);
-    this.add(this.res);
+    this.add(setIm);
+    this.add(difficulty);
+    this.add(setGrille);
+    this.add(res);
     this.setVisible(true);
     this.setSize(300,300);
     this.setLocationRelativeTo(null);

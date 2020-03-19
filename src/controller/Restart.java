@@ -33,7 +33,9 @@ public class Restart extends JButton implements ActionListener{
             this.jeu.setDifficulty(field.getNumber().get(0));
           }else{
             this.jeu.setGrille(new Grille(field.getNumber().get(0),field.getNumber().get(1)));
-            this.vue.getIm().cropImage();
+            if(this.vue.getIm()!=null) {
+              this.vue.getIm().cropImage();
+            }
           }
         }
       }

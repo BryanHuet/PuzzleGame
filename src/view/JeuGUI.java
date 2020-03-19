@@ -9,13 +9,17 @@ public class JeuGUI extends JFrame implements EcouteurModele{
 
   public JeuGUI(Jeu jeu){
     super();
+
+
+    Img im = new Img(jeu, "src/img/lena.png");
+    Vue vue = new Vue(jeu,im);
+
     this.jeu=jeu;
     this.jeu.ajoutEcouteur(this);
-    Img im = new Img(this.jeu, "src/img/lena.png");
-    Vue vue = new Vue(this.jeu, im);
+    this.win=new Win(jeu, vue);
     //this.vue= new Img(jeu);
     this.setTitle("15-Puzzle");
-    this.setVisible(true);
+
     this.setLayout(new BorderLayout());
     this.add(vue,BorderLayout.CENTER);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,8 +28,8 @@ public class JeuGUI extends JFrame implements EcouteurModele{
     this.setSize(800,800);
 
     this.setLocationRelativeTo(null);
-    this.win=new Win(this.jeu, vue);
 
+    this.setVisible(true);
   }
 
   public void modeleMisAJour(Object source){

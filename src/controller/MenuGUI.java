@@ -1,17 +1,16 @@
 package src.controller;
 import java.io.*;
 import javax.swing.*;
-import java.util.*;
 import java.awt.*;
 import src.model.*;
 import java.awt.event.*;
-import java.awt.image.*;
 import src.view.*;
 
 public class MenuGUI extends JFrame{
 
   private Jeu jeu;
   private Vue vue;
+  public static boolean menuOn = false;
 
   public MenuGUI(Jeu jeu,Vue vue){
     super();
@@ -44,6 +43,15 @@ public class MenuGUI extends JFrame{
           }
         }
     });
+
+    this.addWindowListener(new WindowAdapter() {
+      @Override
+      public void windowClosing(WindowEvent e) {
+        menuOn=false;
+      }
+    });
+
+
     res.addEntries(difficulty);
     res.addEntries(setGrille);
 

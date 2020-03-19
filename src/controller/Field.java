@@ -56,7 +56,13 @@ public class Field extends JTextField implements MouseListener,KeyListener{
       }
     }
     public void mouseEntered(MouseEvent e) {}
-    public void mouseExited(MouseEvent e) {}
+    public void mouseExited(MouseEvent e) {
+      if(this.getText().equals("")){
+        this.setText(this.subject);
+        this.setFont(new Font("SansSerif",Font.ITALIC,15));
+        this.setForeground(Color.GRAY);
+      }
+    }
     public void mousePressed(MouseEvent e) {}
     public void mouseReleased(MouseEvent e){}
 

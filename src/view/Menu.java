@@ -5,7 +5,6 @@ import src.model.*;
 import src.controller.*;
 import java.awt.event.*;
 import javax.swing.JMenuBar;
-import javax.swing.JMenu;
 
 public class Menu extends JMenuBar{
 
@@ -21,15 +20,25 @@ public class Menu extends JMenuBar{
     menu.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e){
-          new MenuGUI(Menu.this.jeu,Menu.this.vue);
+          if(! MenuGUI.menuOn) {
+            MenuGUI.menuOn = true;
+            new MenuGUI(Menu.this.jeu, Menu.this.vue);
+          }
         }
     });
     this.add(menu);
 
 
 
-    JMenu menu2 = new JMenu("?");
-    this.add(menu2);
+    JButton delIm = new JButton("Remove image");
+    delIm.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e){
+        Menu.this.vue.setIm(null);
+        Menu.this.jeu.fireChangement();
+      }
+    });
+    this.add(delIm);
 
   }
 }

@@ -31,16 +31,18 @@ public class Case extends JPanel implements MouseListener, KeyListener{
   public void paintComponent(Graphics g){
     //On dessine l'apparence d'une case
     super.paintComponent(g);
-    g.setColor(Color.BLACK);
-    Font myFont = new Font ("Courier New", Font.BOLD, 50);
-    g.setFont(myFont);
     if (! this.subject.equals("")){
-      int i = Integer.parseInt(this.subject);
-      BufferedImage im2=im.getImgCrop().get(i);
-      //g.drawRect(0,0,this.getWidth(),this.getHeight());
-      //g.drawRect(0,0,this.getWidth()-1,this.getHeight()-1);
-      g.drawImage(im2,0,0,DIM,DIM,this);
-      //g.drawString(this.subject,this.getWidth()/2,this.getHeight()/2);
+      if(this.im != null) {
+        int i = Integer.parseInt(this.subject);
+        BufferedImage im2 = im.getImgCrop().get(i);
+        g.drawImage(im2, 0, 0, DIM, DIM, this);
+      }else {
+        g.setColor(Color.WHITE);
+        Font myFont = new Font("Courier New", Font.BOLD, DIM / 2);
+        g.setFont(myFont);
+        g.drawRect(0, 0, this.getWidth() - 1, this.getHeight() - 1);
+        g.drawString(this.subject, this.getWidth() / 2, this.getHeight() / 2);
+      }
     }
   }
 

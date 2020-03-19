@@ -40,8 +40,7 @@ public class Vue extends JPanel implements EcouteurModele{
           c.ipadx=dimCase;
           c.gridx=this.jeu.getSaveJeu().get(this.jeu.getGrille().getGrille()[i][j]).get(1);
           c.gridy=this.jeu.getSaveJeu().get(this.jeu.getGrille().getGrille()[i][j]).get(0);
-          this.add(new Case(this.jeu.getGrille().getGrille()[i][j]+"",this.jeu,this.im,dimCase),c);
-
+          this.add(new Case(this.jeu.getGrille().getGrille()[i][j] + "", this.jeu,this.im, dimCase), c);
       }else{
         c.gridx=j;
         c.gridy=i;

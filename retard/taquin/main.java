@@ -9,9 +9,10 @@ public class main{
 
 		Grille grille = new Grille(3,3);
 		Jeu jeu = new Jeu(grille);
-		grille.melanger(10);
+		//grille.melanger(10);
 	 	grille.afficher();
-	 	jeu.action(1);
-	 	grille.afficher();
+	 	jeu.action(5);
+	 	jeu.action(5);
+
 	}
 }

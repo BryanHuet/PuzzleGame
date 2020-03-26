@@ -1,4 +1,5 @@
 package src.controller;
+
 import javax.swing.*;
 import java.util.*;
 import java.awt.*;
@@ -6,6 +7,7 @@ import src.model.*;
 import java.awt.event.*;
 import java.awt.image.*;
 import src.view.*;
+
 public class Case extends JPanel implements MouseListener, KeyListener{
   private String subject;
   private Jeu jeu;
@@ -50,8 +52,7 @@ public class Case extends JPanel implements MouseListener, KeyListener{
 //Implementation de MouseListener
 
   public void mouseEntered(MouseEvent e) {
-    //Event qui permet de modifier la couleur de fond, lorsque la souris passe
-    //sur un case qui permet de jouer un coup
+    //Event qui permet de modifier la couleur de fond, lorsque la souris passe sur un case
     if(!this.jeu.isFinished()){
       if(! this.subject.equals("")){
       int i = Integer.parseInt(this.subject);
@@ -67,8 +68,7 @@ public class Case extends JPanel implements MouseListener, KeyListener{
   }
 
   public void mouseClicked(MouseEvent e) {
-    // Lors du click on recup le sujet de la case, et on applique le coup sur
-    // le jeu
+    // Lors du click on recupère le sujet de la case, et on applique le coup sur le jeu
     if(!this.jeu.isFinished()){
       if(! this.subject.equals("")){
       int i = Integer.parseInt(this.subject);

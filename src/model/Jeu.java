@@ -13,6 +13,7 @@ public class Jeu extends AbstractModeleEcoutable{
     this.difficulty=difficulty;
     this.ecouteurs=new ArrayList<>();
 
+    //On mélange le jeu lors de sa première instance.
     if (etat0){
       etat0=false;
       shuffle(this.difficulty);
@@ -102,7 +103,7 @@ public class Jeu extends AbstractModeleEcoutable{
   }
 
   public Jeu play(int coup){
-    //On intervertit la place de la case 0 et la case coup;
+    //Doit return un jeu où la case 0 est à l'emplacement de la case coup (et inversement)
     if (! this.getVoisins().contains(coup)){
       System.out.println("impossible");
       return this;
@@ -120,7 +121,7 @@ public class Jeu extends AbstractModeleEcoutable{
   }
 
   public void shuffle(int difficulty){
-    //fonction qui joue x(=difficulty) coups si et seulement si etat0=true;
+    //fonction qui joue x(=difficulty) coups;
     Random rand = new Random();
     Jeu n = new Jeu(this.grille,this.difficulty);
     for (int i=0; i<difficulty;i++){
@@ -131,7 +132,7 @@ public class Jeu extends AbstractModeleEcoutable{
   }
 
   public void coup(int coup){
-    //joue un coup;
+    //play le coup et met a jour l'etat present
     this.grille=this.play(coup).getGrille();
     this.saveJeu=this.play(coup).getSaveJeu();
     fireChangement();
@@ -139,6 +140,7 @@ public class Jeu extends AbstractModeleEcoutable{
 
 
   public void reset(){
+    //on reset le jeu
     this.grille=new Grille(this.grille.getLargeur(),this.grille.getHauteur());
     this.saveJeu = new HashMap<>();
     this.shuffle(this.difficulty);

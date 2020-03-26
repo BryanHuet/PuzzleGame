@@ -27,6 +27,7 @@ public class MenuGUI extends JFrame{
     setIm.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e){
+
           JFileChooser fileChooser = new JFileChooser(new File("."));
           PrintWriter sortie;
           File fichier=new File(".");

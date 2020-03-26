@@ -33,6 +33,12 @@ public class Grille{
 
 //methodes
   public int[][] construct(){
+    //return un tableau 2D, on placera 0 en fin
+    //on empeche la creation de grille insoluble
+    if((getSize() == 0) || (getSize()==1)){
+      this.largeur=2;
+      this.hauteur=2;
+    }
     int[][] g= new int[this.largeur][this.hauteur];
     int cmpt=1;
     for(int i=0;i<this.largeur;i++){

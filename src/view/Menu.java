@@ -3,7 +3,6 @@ import javax.swing.*;
 import java.awt.*;
 import src.model.*;
 import src.controller.*;
-import java.awt.event.*;
 import javax.swing.JMenuBar;
 
 public class Menu extends JMenuBar{
@@ -22,36 +21,30 @@ public class Menu extends JMenuBar{
     img = this.vue.getIm();
     this.setBackground(Color.GRAY);
     JButton menu = new JButton("Personnalisation");
-    menu.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e){
-          if(! MenuGUI.menuOn) {
-            MenuGUI.menuOn = true;
-            new MenuGUI(Menu.this.jeu, Menu.this.vue);
-          }
-        }
+    menu.addActionListener(e -> {
+      if(! MenuGUI.menuOn) {
+        MenuGUI.menuOn = true;
+        new MenuGUI(Menu.this.jeu, Menu.this.vue);
+      }
     });
     this.add(menu);
 
 
 
     this.delIm= new JButton("Image : on");
-    delIm.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e){
-        Menu.im= !Menu.im;
-        if(Menu.this.vue.getIm() != null){
-          Menu.img=Menu.this.vue.getIm();
-        }
-        if(Menu.im){
-          Menu.this.delIm.setText("Image : on");
-          Menu.this.vue.setIm(Menu.img);
-        }else{
-          Menu.this.delIm.setText("Image : off");
-          Menu.this.vue.setIm(null);
-        }
-        Menu.this.jeu.fireChangement();
+    delIm.addActionListener(e -> {
+      Menu.im= !Menu.im;
+      if(Menu.this.vue.getIm() != null){
+        Menu.img=Menu.this.vue.getIm();
       }
+      if(Menu.im){
+        Menu.this.delIm.setText("Image : on");
+        Menu.this.vue.setIm(Menu.img);
+      }else{
+        Menu.this.delIm.setText("Image : off");
+        Menu.this.vue.setIm(null);
+      }
+      Menu.this.jeu.fireChangement();
     });
     this.add(delIm);
 

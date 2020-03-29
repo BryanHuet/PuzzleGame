@@ -13,7 +13,7 @@ public class Restart extends JButton implements ActionListener{
 
 
   public Restart(Jeu jeu, Vue vue){
-    super("Restart");
+    super("Recommencer");
     this.vue=vue;
     this.jeu=jeu;
     this.addActionListener(this);

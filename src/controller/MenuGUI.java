@@ -24,25 +24,22 @@ public class MenuGUI extends JFrame{
     Field difficulty = new Field("Difficulté", true);
     Field setGrille = new Field("taille grille \"n,m\"", false);
     JButton setIm = new JButton("Charger image");
-    setIm.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e){
+    setIm.addActionListener(e -> {
 
-          JFileChooser fileChooser = new JFileChooser(new File("."));
-          PrintWriter sortie;
-          File fichier=new File(".");
+      JFileChooser fileChooser = new JFileChooser(new File("."));
+      PrintWriter sortie;
+      File fichier=new File(".");
 
-          if (fileChooser.showOpenDialog(null)==JFileChooser.APPROVE_OPTION) {
-              fichier = fileChooser.getSelectedFile();
-              try{
-              sortie = new PrintWriter(new FileWriter(fichier.getPath(),true));
-              sortie.close();
-            }catch(Exception e2){}
-          }
-          if(! fichier.getPath().equals(".")){
-            MenuGUI.this.vue.setIm(new Img(MenuGUI.this.jeu,fichier.getPath()));
-          }
-        }
+      if (fileChooser.showOpenDialog(null)==JFileChooser.APPROVE_OPTION) {
+          fichier = fileChooser.getSelectedFile();
+          try{
+          sortie = new PrintWriter(new FileWriter(fichier.getPath(),true));
+          sortie.close();
+        }catch(Exception e2){}
+      }
+      if(! fichier.getPath().equals(".")){
+        MenuGUI.this.vue.setIm(new Img(MenuGUI.this.jeu,fichier.getPath()));
+      }
     });
 
     this.addWindowListener(new WindowAdapter() {

@@ -12,7 +12,7 @@ public class Win extends JPanel{
     super();
     this.setLayout(new FlowLayout(FlowLayout.CENTER,25,300));
     this.setBackground(Color.GRAY);
-    this.restart = new Restart(jeu, vue);
+    this.restart = new Recommencer(jeu, vue);
     this.add(this.restart);
   }
 

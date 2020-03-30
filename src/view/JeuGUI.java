@@ -11,14 +11,14 @@ public class JeuGUI extends JFrame implements EcouteurModele{
     super();
 
 
-    Img im = new Img(jeu, "src/img/lena.png");
+    Img im = new Img(jeu, "dist/img/lena.png");
     Vue vue = new Vue(jeu,im);
 
     this.jeu=jeu;
     this.jeu.ajoutEcouteur(this);
     this.win=new Win(jeu, vue);
     //this.vue= new Img(jeu);
-    this.setTitle("15-Puzzle");
+    this.setTitle("n-Puzzle");
 
     this.setLayout(new BorderLayout());
     this.add(vue,BorderLayout.CENTER);

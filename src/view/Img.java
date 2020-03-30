@@ -17,21 +17,25 @@ public class Img extends JPanel{
   public Img(Jeu jeu, String path){
     super();
     this.jeu=jeu;
-    try {
+      try {
         this.imLoad = ImageIO.read(new File(path));
-        }
-    catch(IOException e) {
-        e.printStackTrace();
-        }
-
-    if(this.imLoad.getHeight()!=this.imLoad.getWidth()){
+    }
+    catch(Exception e) {
+        this.imLoad=null;
+    }
+    if (this.imLoad != null) {
+      if (this.imLoad.getHeight() != this.imLoad.getWidth()) {
         this.cropCarre();
       }
-    this.cropImage();
-
+      this.cropImage();
+    }
   }
 
-    public HashMap<Integer,BufferedImage> getImgCrop(){
+  public BufferedImage getImLoad() {
+    return imLoad;
+  }
+
+  public HashMap<Integer,BufferedImage> getImgCrop(){
         return this.crop;
     }
 

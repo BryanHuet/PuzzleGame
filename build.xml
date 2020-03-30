@@ -1,4 +1,4 @@
-<project name="15-puzzle" default="main" basedir=".">
+<project name="n-puzzle" default="main" basedir=".">
   <target name="clean">
     <delete dir="build"/>
   </target>
@@ -9,8 +9,8 @@
   </target>
 
   <target name="jar" depends="compile">
-    <mkdir dir="build/jar"/>
-    <jar destfile="build/jar/Exe.jar" basedir="build/classes">
+    <mkdir dir="dist/jar"/>
+    <jar destfile="dist/jar/Exe.jar" basedir="build/classes">
       <manifest>
         <attribute name="Main-Class" value="src.Main"/>
       </manifest>
@@ -18,7 +18,7 @@
   </target>
 
   <target name="run" depends="jar">
-    <java jar="build/jar/Exe.jar" fork="true"/>
+    <java jar="dist/jar/Exe.jar" fork="true"/>
   </target>
 
   <target name="main" depends="clean,run"/>

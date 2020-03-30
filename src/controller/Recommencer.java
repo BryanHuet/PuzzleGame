@@ -5,14 +5,14 @@ import src.model.*;
 import java.awt.event.*;
 import src.view.*;
 
-public class Restart extends JButton implements ActionListener{
+public class Recommencer extends JButton implements ActionListener{
 
   private Jeu jeu;
   private Vue vue;
   private ArrayList<Field> entries;
 
 
-  public Restart(Jeu jeu, Vue vue){
+  public Recommencer(Jeu jeu, Vue vue){
     super("Recommencer");
     this.vue=vue;
     this.jeu=jeu;

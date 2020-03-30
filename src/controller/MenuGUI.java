@@ -20,28 +20,13 @@ public class MenuGUI extends JFrame{
     this.setLayout(new FlowLayout(FlowLayout.CENTER,50,30));
     this.setTitle("Personnalisation");
 
-    Restart res = new Restart(this.jeu, this.vue);
+    Recommencer res = new Recommencer(this.jeu, this.vue);
     Field difficulty = new Field("Difficulté", true);
     Field setGrille = new Field("taille grille \"n,m\"", false);
     JButton setIm = new JButton("Charger image");
-    setIm.addActionListener(e -> {
+    setIm.addActionListener(e ->
 
-      JFileChooser fileChooser = new JFileChooser(new File("."));
-      PrintWriter sortie;
-      File fichier=new File(".");
-
-      if (fileChooser.showOpenDialog(null)==JFileChooser.APPROVE_OPTION) {
-          fichier = fileChooser.getSelectedFile();
-          try{
-          sortie = new PrintWriter(new FileWriter(fichier.getPath(),true));
-          sortie.close();
-        }catch(Exception e2){}
-      }
-      if(! fichier.getPath().equals(".")){
-        MenuGUI.this.vue.setIm(new Img(MenuGUI.this.jeu,fichier.getPath()));
-      }
-    });
-
+    MenuGUI.this.chargerImage());
     this.addWindowListener(new WindowAdapter() {
       @Override
       public void windowClosing(WindowEvent e) {
@@ -60,9 +45,27 @@ public class MenuGUI extends JFrame{
     this.setVisible(true);
     this.setSize(300,300);
     this.setLocationRelativeTo(null);
+    this.setAlwaysOnTop (true);
     this.setBackground(Color.GRAY);
   }
 
+
+  private void chargerImage() {
+
+      JFileChooser fileChooser = new JFileChooser(new File("."));
+      PrintWriter sortie;
+      File fichier=new File(".");
+      if (fileChooser.showOpenDialog(null)==JFileChooser.APPROVE_OPTION) {
+        fichier = fileChooser.getSelectedFile();
+        try{
+          sortie = new PrintWriter(new FileWriter(fichier.getPath(),true));
+          sortie.close();
+        }catch(Exception ignored){}
+      }
+      if(! fichier.getPath().equals(".")){
+        this.vue.setIm(new Img(this.jeu,fichier.getPath()));
+      }
+    }
 
 
 }

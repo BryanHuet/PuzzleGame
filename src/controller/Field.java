@@ -31,14 +31,18 @@ public class Field extends JTextField implements MouseListener,KeyListener{
       try{
         numbers.add(Integer.parseInt(this.getText()));
       }
-      catch(Exception e){}
+      catch(Exception e){
+        numbers.clear();
+      }
     }else{
       try{
         String[] getNM = this.getText().split(",");
         numbers.add(Integer.parseInt(getNM[0]));
         numbers.add(Integer.parseInt(getNM[1]));
       }
-      catch(Exception e){}
+      catch(Exception e){
+        numbers.clear();
+      }
     }
     return numbers;
   }

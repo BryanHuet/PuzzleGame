@@ -34,7 +34,7 @@ public class Case extends JPanel implements MouseListener, KeyListener{
     //On dessine l'apparence d'une case
     super.paintComponent(g);
     if (! this.subject.equals("")){
-      if(this.im != null) {
+      if(this.im != null && this.im.getImLoad() != null) {
         int i = Integer.parseInt(this.subject);
         BufferedImage im2 = im.getImgCrop().get(i);
         g.drawImage(im2, 0, 0, DIM, DIM, this);

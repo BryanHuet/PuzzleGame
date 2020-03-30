@@ -7,6 +7,7 @@ public class Jeu extends AbstractModeleEcoutable{
   public static boolean etat0=true;
   private int difficulty;
 
+
   public Jeu(Grille grille,int difficulty){
     super();
     this.grille=grille;
@@ -68,8 +69,11 @@ public class Jeu extends AbstractModeleEcoutable{
     return true;
 }
 
+  /**
+   * On sauvegarde la position de chaque case
+   * @return HashMap où chaque case est associée à une position
+   */
   public HashMap<Integer,ArrayList<Integer>> saveJeu(){
-    //stock dans une hashMap la position de chaque case;
     HashMap<Integer,ArrayList<Integer>> save = new HashMap<>();
     for(int i=0;i<this.grille.getLargeur();i++){
       for (int j=0;j<this.grille.getHauteur();j++){
@@ -82,9 +86,11 @@ public class Jeu extends AbstractModeleEcoutable{
     return save;
   }
 
-
+  /**
+   * On cherche les voisins de la case  0
+   * @return ArrayList contenant les cases voisines de la case 0
+   */
   public ArrayList<Integer> getVoisins(){
-    //On stock dans une liste les voisins de la case 0 (correspond a la case vide)
     ArrayList<Integer> coord0 = this.saveJeu.get(0);
     ArrayList<Integer> voisins= new ArrayList<>();
     for (int i=0;i<(this.grille.getLargeur()*this.grille.getHauteur());i++){

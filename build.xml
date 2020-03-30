@@ -21,5 +21,13 @@
     <java jar="dist/jar/Exe.jar" fork="true"/>
   </target>
 
+  <target name="javadoc">
+    <javadoc sourcepath="src/model" destdir="doc">
+      <fileset dir="src" defaultexcludes="yes">
+        <include name="**"/>
+      </fileset>
+    </javadoc>
+  </target>
+
   <target name="main" depends="clean,run"/>
 </project>

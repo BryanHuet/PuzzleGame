@@ -26,7 +26,7 @@ public class VueGrille extends JPanel{
                 label1.setBackground( Color.GRAY ); // couleur du background du label
                 label1.setForeground( Color.BLACK ); // couleur du texte
         
-                JButton box = new JButton(" "+ this.grille.getGrille()[i%3][i*i%3]);  // Creation de la box
+                JButton box = new JButton(" "+ this.grille.getGrille()[(i-i%3)/3][i%3]);  // Creation de la box
                 
                 this.add(box); // Ajout des case sur la grille
 

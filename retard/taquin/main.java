@@ -8,7 +8,7 @@ public class main{
 
 		Grille grille = new Grille(3,3);
 
-		new VueGrille(grille);
+		new Vue(grille);
 
 		Jeu jeu = new Jeu(grille);
 		//grille.melanger(10);

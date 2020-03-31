@@ -5,25 +5,18 @@ import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.lang.Object;
-
+import taquin.model.*;
 import taquin.*;
 
 public class VueGrille extends JPanel{
 
-
+	private Grille grille;
 	GridLayout grid = new GridLayout(3,3,3,4);
-
-	Grille grille = new Grille();
 		
-	public VueGrille(){
-		
+	public VueGrille(Grille grille){
+		this.grille = grille;
 		
 		this.setLayout(grid);
-
-
-        
-
-
 	
        // Boucle permettant de creer les cases
         for (int i =0; i<9; i++){ 
@@ -33,13 +26,13 @@ public class VueGrille extends JPanel{
                 label1.setBackground( Color.GRAY ); // couleur du background du label
                 label1.setForeground( Color.BLACK ); // couleur du texte
         
-                JButton box = new JButton(" "+ grille.this.grille[i][j]);  // Creation de la box
+                JButton box = new JButton(" "+ this.grille.getGrille()[i%3][i*i%3]);  // Creation de la box
                 
                 this.add(box); // Ajout des case sur la grille
 
                
 
-            }
+        }
         
 
 

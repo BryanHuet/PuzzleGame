@@ -5,9 +5,11 @@ import taquin.view.*;
 
 public class main{
 	public static void main(String [] args){
-		new GUI();
 
 		Grille grille = new Grille(3,3);
+
+		new VueGrille(grille);
+
 		Jeu jeu = new Jeu(grille);
 		//grille.melanger(10);
 	 	grille.afficher();

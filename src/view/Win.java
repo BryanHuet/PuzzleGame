@@ -17,7 +17,7 @@ public class Win extends JPanel{
   }
 
 
-  public void visible(Boolean bool){
+  public void visible(boolean bool){
     this.setVisible(bool);
     this.restart.setVisible(bool);
   }

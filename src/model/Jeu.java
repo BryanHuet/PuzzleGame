@@ -47,28 +47,24 @@ public class Jeu extends AbstractModeleEcoutable{
     this.grille.affiche();
   }
 
+  /**
+   * On cherche a savoir si le jeu est fini; On parcourt donc l'emplacement de chaque case pour verifier si valeur
+   * match avec une nouvelle grille non mélangée.
+   *  @return true si le jeu est fini, false sinon.
+   */
   public boolean isFinished(){
     //On cherche a savoir si le jeu est fini; On parcourt donc l'emplacement
-    //de chaque case pour verifier sa valeur;
-    int x=1;
-    for (int i=0;i<this.grille.getLargeur();i++){
-      for(int j=0;j<this.grille.getHauteur();j++){
-        if (x==this.grille.getSize()){
-          return true;
-        }
-        ArrayList<Integer> coordx = this.getSaveJeu().get(x);
-        if (coordx.get(0)!=i){
+    //de chaque case pour verifier sa valeur, on s'aide d'une nouvelle grille.
+    Grille temp = new Grille(this.grille.getLargeur(),this.grille.getHauteur());
+    for(int i = 0;i<grille.getLargeur();i++){
+      for(int j = 0;j<grille.getHauteur();j++){
+        if(temp.getGrille()[i][j] != this.grille.getGrille()[i][j]){
           return false;
         }
-        if (coordx.get(1)!=j){
-            return false;
-          }
-        x=x+1;
-        }
       }
+    }
     return true;
-}
-
+  }
   /**
    * On sauvegarde la position de chaque case
    * @return HashMap où chaque case est associée à une position
@@ -93,7 +89,7 @@ public class Jeu extends AbstractModeleEcoutable{
   public ArrayList<Integer> getVoisins(){
     ArrayList<Integer> coord0 = this.saveJeu.get(0);
     ArrayList<Integer> voisins= new ArrayList<>();
-    for (int i=0;i<(this.grille.getLargeur()*this.grille.getHauteur());i++){
+    for (int i=0;i<this.grille.getSize();i++){
       if(this.saveJeu.get(i).get(0).equals(coord0.get(0))){
         if (this.saveJeu.get(i).get(1)==coord0.get(1)+1 || this.saveJeu.get(i).get(1)==coord0.get(1)-1){
           voisins.add(i);
@@ -117,7 +113,7 @@ public class Jeu extends AbstractModeleEcoutable{
     ArrayList<Integer>coord0=this.saveJeu.get(0);
     ArrayList<Integer>coordCoup=this.saveJeu.get(coup);
     Grille newGrille=new Grille(this.grille.getLargeur(),this.grille.getHauteur());
-    for (int i=0;i<(this.grille.getLargeur()*this.grille.getHauteur());i++){
+    for (int i=0;i<this.grille.getSize();i++){
       newGrille.setGrille(this.saveJeu.get(i).get(0),this.saveJeu.get(i).get(1),i);
     }
 
@@ -130,9 +126,11 @@ public class Jeu extends AbstractModeleEcoutable{
     //fonction qui joue x(=difficulty) coups;
     Random rand = new Random();
     Jeu n = new Jeu(this.grille,this.difficulty);
-    for (int i=0; i<difficulty;i++){
-      int choix=rand.nextInt(n.getVoisins().size());
-      n=n.play(n.getVoisins().get(choix));
+    if (isFinished()) {
+      for (int i = 0; i < difficulty; i++) {
+        int choix = rand.nextInt(n.getVoisins().size());
+        n = n.play(n.getVoisins().get(choix));
+      }
     }
   this.setGrille(n.getGrille());
   }
